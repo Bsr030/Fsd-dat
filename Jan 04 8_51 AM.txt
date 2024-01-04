@@ -1,0 +1,2095 @@
+fsd internal 1
+#armstrong
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armstrong Number Checker</title>
+</head>
+<body>
+    <script>
+        // Function to check if a number is an Armstrong number
+        function isArmstrongNumber(number) {
+            const numStr = number.toString();
+            const numDigits = numStr.length;
+            let sum = 0;
+
+            for (let i = 0; i < numDigits; i++) {
+                sum += Math.pow(parseInt(numStr[i]), numDigits);
+            }
+
+            return sum === number;
+        }
+
+        // Click event handler
+        function checkArmstrongNumber() {
+            const userInput = document.getElementById("userInput").value;
+            const numberToCheck = parseInt(userInput);
+
+            if (!isNaN(numberToCheck)) {
+                if (isArmstrongNumber(numberToCheck)) {
+                    console.log(${numberToCheck} is an Armstrong number.);
+                } else {
+                    console.log(${numberToCheck} is not an Armstrong number.);
+                }
+            } else {
+                console.log("Invalid input. Please enter a valid number.");
+            }
+        }
+    </script>
+
+    <label for="userInput">Enter a number:</label>
+    <input type="text" id="userInput">
+    <button onclick="checkArmstrongNumber()">Check</button>
+</body>
+</html>
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+2)cell padding and spacing
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 40px;
+}
+</style>
+</head>
+<body>
+<h2>Cellpadding - top - bottom - left - right </h2>
+<p>We can specify different padding for all fours sides of the cell content.</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>80</td>
+  </tr>
+</table>
+</body>
+</html>
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+3)calci
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+<body>
+
+  <h2>Calculator</h2>
+
+  <form id="calculatorForm">
+    <label for="num1">Enter the first number:</label>
+    <input type="number" id="num1" required>
+
+    <label for="num2">Enter the second number:</label>
+    <input type="number" id="num2" required>
+
+    <button type="button" onclick="performOperations()">Calculate</button>
+  </form>
+
+  <h3>Results:</h3>
+  <p id="sum"></p>
+  <p id="product"></p>
+  <p id="difference"></p>
+  <p id="quotient"></p>
+
+  <script>
+    function performOperations() {
+      // Get input values
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+
+      // Check if the input is valid
+      
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter valid numbers.");
+        return;
+      }
+
+      // Perform operations
+      const sum = num1 + num2;
+      const product = num1 * num2;
+      const difference = num1 - num2;
+      const quotient = num1 / num2;
+
+      // Display results
+     console.log(sum);
+     console.log(product);
+     console.log(difference);
+     console.log(quotient);
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+4)biodata and email validation
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="registrationForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" required>
+
+    <button type="button" onclick="validateForm()">Register</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      // Get input values
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const age = document.getElementById("age").value;
+
+      // Validate email using a simple regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        console.log("Please enter a valid email address.");
+        return;
+      }
+
+      // Display Biodata
+      console.log(fullName+"\n"+email+"\n"+age);
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////// 
+
+5)registration form
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="registrationForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <div class="error" id="usernameError"></div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <div class="error" id="emailError"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <div class="error" id="passwordError"></div>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" required>
+    <div class="error" id="confirmPasswordError"></div>
+
+    <button type="button" onclick="validateForm()">Register</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      // Reset errors
+      resetErrors();
+
+      // Get input values
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      // Validate username (should not be empty)
+      if (!username.trim()) {
+        console.log("username", "Username cannot be empty");
+        return;
+      }
+
+      // Validate email using a simple regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        console.log("email", "Please enter a valid email address");
+        return;
+      }
+
+      // Validate password (should be at least 6 characters)
+      if (password.length < 6) {
+        console.log("password", "Password should be at least 6 characters");
+        return;
+      }
+
+      // Validate password confirmation
+      if (password !== confirmPassword) {
+        console.log("confirmPassword", "Passwords do not match");
+        return;
+      }
+
+      // If all validations pass, submit the form (or perform further actions)
+      console.log("Registration successful!");
+    }
+
+    function displayError(fieldId, errorMessage) {
+      const errorElement = document.getElementById(${fieldId}Error);
+      errorElement.textContent = errorMessage;
+    }
+
+    function resetErrors() {
+      const errorElements = document.querySelectorAll(".error");
+      errorElements.forEach((element) => {
+        element.textContent = "";
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+7)numbers to words
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number to Words Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="numberForm">
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" required>
+    <button type="button" onclick="convertToWords()">Convert</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    function convertToWords() {
+      const number = parseInt(document.getElementById("number").value);
+
+      if (isNaN(number)) {
+        console.log("Please enter a valid number.");
+        return;
+      }
+
+      const words = numberToWords(number);
+      console.log("result :"+words);
+    }
+
+    function numberToWords(number) {
+      const units = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+      const teens = ["", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+      const tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+
+      if (number === 0) {
+        return "Zero";
+      }
+
+      let words = "";
+
+      // Handle millions
+      if (number >= 1000000) {
+        words += numberToWords(Math.floor(number / 1000000)) + " Million ";
+        number %= 1000000;
+      }
+
+      // Handle thousands
+      if (number >= 1000) {
+        words += numberToWords(Math.floor(number / 1000)) + " Thousand ";
+        number %= 1000;
+      }
+
+      // Handle hundreds
+      if (number >= 100) {
+        words += units[Math.floor(number / 100)] + " Hundred ";
+        number %= 100;
+      }
+
+      // Handle tens and units
+      if (number > 0) {
+        if (number >= 11 && number <= 19) {
+          words += teens[number - 11] + " ";
+        } else {
+          words += tens[Math.floor(number / 10)] + " " + units[number % 10] + " ";
+        }
+      }
+
+      return words.trim();
+    }
+  </script>
+
+</body>
+</html>
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+8)internal
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: blue;
+}
+h1 {
+    color: red;
+    padding: 60px;
+} 
+</style>
+</head>
+<body>
+
+<h1>Hostinger Tutorials</h1>
+<p>This is our paragraph.</p>
+
+</body>
+</html>
+
+inline
+<!DOCTYPE html>
+<html>
+<body style="background-color:black;">
+
+<h1 style="color:white;padding:30px;">Hostinger Tutorials</h1>
+<p style="color:white;">Something usefull here.</p>
+
+</body>
+</html>
+
+external
+<link rel="stylesheet" type="text/css" href="style.css" />
+.xleftcol {
+   float: left;
+   width: 33%;
+   background:#809900;
+}
+.xmiddlecol {
+   float: left;
+   width: 34%;
+   background:#eff2df;
+}
+
+
+////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+9}multiplication table
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Function to generate and print multiplication tables for numbers 1 to 10
+function printMultiplicationTables() {
+  for (let i = 1; i <= 10; i++) {
+    console.log(Multiplication Table for ${i}:);
+    for (let j = 1; j <= 10; j++) {
+      const result = i * j;
+      console.log(${i} x ${j} = ${result});
+    }
+    console.log(); // Add a newline for better readability
+  }
+}
+
+// Example: Print multiplication tables for numbers 1 to 10
+printMultiplicationTables();
+
+    </script>
+</body>
+</html>
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+10)age verification
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Verification</title>
+</head>
+<body>
+
+  <script>
+    // Prompt the user to enter their age
+    const userAge = prompt("Please enter your age:");
+
+    // Check if the entered age is greater than 18
+    if (userAge && parseInt(userAge) > 18) {
+      alert("Welcome! You are allowed to enter the site.");
+    } else {
+      alert("Sorry! You are not allowed to enter the site.");
+    }
+  </script>
+
+</body>
+</html>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+11)factorial
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factorial Calculator</title>
+</head>
+<body>
+
+  <script>
+    // Prompt the user to enter a number
+    const userInput = prompt("Enter a number:");
+
+    // Convert the input to a number
+    const number = parseInt(userInput);
+
+    // Check if the input is a valid number
+    if (!isNaN(number) && number >= 0) {
+      // Calculate the factorial
+      let factorial = 1;
+      for (let i = 1; i <= number; i++) {
+        factorial *= i;
+      }
+
+      // Display the result using alert
+      console.log(The factorial of ${number} is: ${factorial});
+    } else {
+      // Display an alert for invalid input
+      console.log("Please enter a non-negative integer.");
+    }
+  </script>
+
+</body>
+</html>
+////////////////////////////////////////////////////////////////////////////////
+12)show capital
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Capital Display</title>
+</head>
+<body>
+
+  <label for="countrySelect">Select a country:</label>
+  <select id="countrySelect">
+    <option value="usa">United States</option>
+    <option value="canada">Canada</option>
+    <option value="uk">United Kingdom</option>
+    <!-- Add more countries as needed -->
+  </select>
+
+  <button onclick="displayCapital()">Show Capital</button>
+
+  <script>
+    function displayCapital() {
+      // Get the selected country from the dropdown
+      const selectedCountry = document.getElementById("countrySelect").value;
+
+      // Use a switch statement to determine the capital based on the selected country
+      let capital;
+      switch (selectedCountry) {
+        case "usa":
+          capital = "Washington, D.C.";
+          break;
+        case "canada":
+          capital = "Ottawa";
+          break;
+        case "uk":
+          capital = "London";
+          break;
+        // Add more cases for additional countries
+
+        default:
+          capital = "Unknown";
+      }
+
+      // Display the capital using alert (you can use other methods if needed)
+      console.log(The capital of ${selectedCountry.charAt(0).toUpperCase() + selectedCountry.slice(1)} is: ${capital});
+    }
+  </script>
+
+</body>
+</html>
+//////////////////////////////////////////////////////////////////////////////////////
+
+13)faculty and details
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Time Table</title>
+  <style>
+    /* Optional: Add some basic styling for better presentation */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .subject {
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="subject" onclick="displayFacultyInfo('Math', 'John Doe', 'Math Department', 'Room 101')">
+    Math
+  </div>
+
+  <div class="subject" onclick="displayFacultyInfo('English', 'Jane Smith', 'English Department', 'Room 102')">
+    English
+  </div>
+
+  <div class="subject" onclick="displayFacultyInfo('History', 'Bob Johnson', 'History Department', 'Room 103')">
+    History
+  </div>
+
+  <!-- Add more subjects as needed -->
+
+  <script>
+    function displayFacultyInfo(subject, facultyName, deptNo, roomNo) {
+      const message = Subject: ${subject}\nFaculty Name: ${facultyName}\nDepartment: ${deptNo}\nRoom No: ${roomNo};
+      console.log(message);
+    }
+  </script>
+
+</body>
+</html>
+/////////////////////////////////////////////////////////////////////////////////
+
+14)display time at one end
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #start-time {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <form id="nameForm">
+      <label for="name">Enter your name:</label>
+      <input type="text" id="name" required>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="helloPage" style="display: none;">
+      <h2>Hello <span id="displayName"></span>!</h2>
+      <div id="start-time">Start Time: <span id="startTime"></span></div>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+    <div id="logoutPage" style="display: none;">
+      <h2>Thank You for using the application!</h2>
+      <p>Duration of usage: <span id="duration"></span></p>
+    </div>
+  </div>
+
+  <script>
+    let startTime;
+    
+    function submitForm() {
+      const name = document.getElementById("name").value;
+      if (name.trim() !== "") {
+        // Save name and start time in session storage
+        sessionStorage.setItem("name", name);
+        startTime = new Date();
+        sessionStorage.setItem("startTime", startTime.toISOString());
+
+        // Display hello page
+        document.getElementById("displayName").innerText = name;
+        document.getElementById("startTime").innerText = startTime.toLocaleTimeString();
+        document.getElementById("nameForm").style.display = "none";
+        document.getElementById("helloPage").style.display = "block";
+      }
+    }
+
+    function logout() {
+      // Calculate duration
+      const endTime = new Date();
+      const duration = Math.round((endTime - startTime) / 1000); // in seconds
+
+      // Display logout page with duration
+      document.getElementById("duration").innerText = ${duration} seconds;
+      document.getElementById("helloPage").style.display = "none";
+      document.getElementById("logoutPage").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
+
+///////////////////////////////////////////////////////
+
+15) Dynamically generating the drop down list:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Dynamic Dropdown Lists</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ background-color: #f0f0f0;
+ text-align: center;
+ margin: 0;
+ padding: 0;
+ }
+ 
+ h1 {
+ background-color: #007bff;
+ color: #fff;
+ padding: 20px;
+ margin: 0;
+ }
+ 
+ .container {
+ max-width: 400px;
+ margin: 20px auto;
+ background-color: #fff;
+ padding: 20px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ }
+ 
+ label {
+ display: block;
+ margin: 10px 0;
+ }
+ 
+ select {
+ width: 100%;
+ padding: 10px;
+ margin: 0;
+ }
+ </style>
+ 
+
+</head>
+<body>
+ <h1>Dynamic Dropdown Lists</h1>
+ <div class="container">
+ <label for="category">Select Category:</label>
+ <select id="category">
+ <option value="Telangana">Telangana</option>
+ <option value="Andhra_pradesh">Andhra_pradesh</option>
+ <option value="Karnataka">Karnataka</option>
+ </select>
+ <label for="subcategory">Select Subcategory:</label>
+ <select id="subcategory"></select>
+ </div>
+ <script>
+ const subcategories = {
+ Telangana: ["Hyderabad", "Suryapet", "Warangal"],
+ Andhra_pradesh: ["Guntur", "kurnool", "Vizag"],
+ Karnataka: ["Raichur", "banglore", "Gulburg"]
+ };
+ document.getElementById("category").addEventListener("change", function () {
+ const categoryDropdown = document.getElementById("category");
+ const subcategoryDropdown = document.getElementById("subcategory");
+ const selectedCategory = categoryDropdown.value;
+ subcategoryDropdown.innerHTML = '';
+ if (selectedCategory && subcategories[selectedCategory]) {
+ const options = subcategories[selectedCategory];
+ for (const option of options) {
+ const optionElement = document.createElement("option");
+ optionElement.value = option;
+ optionElement.text = option;
+ subcategoryDropdown.appendChild(optionElement);
+ }
+ }
+ });
+ </script>
+</body>
+</html>
+
+
+
+
+////////////////////////////////////////////////////////////////////
+
+
+16) Moving object in different directions:
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Object Movement</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ text-align: center;
+ }
+ #container {
+ width: 300px;
+ height: 300px;
+ margin: 0 auto;
+ border: 1px solid #ccc;
+ position: relative;
+ }
+ #object {
+ width: 50px;
+ height: 50px;
+ background-color: #3498db;
+ position: absolute;
+ transition: all 0.3s ease-in-out; 
+ }
+ button {
+ margin: 5px;
+ }
+ </style>
+</head>
+<body>
+ <h1>Object Movement</h1>
+ 
+ <div id="container">
+ <div id="object"></div>
+ </div>
+ <button id="left" onclick="moveLeft()">Left</button>
+ <button id="right" onclick="moveRight()">Right</button>
+ <button id="top" onclick="moveTop()">Top</button>
+ <button id="bottom" onclick="moveBottom()">Bottom</button>
+ <script>
+ const object = document.getElementById('object');
+ const container = document.getElementById('container');
+ function moveLeft() {
+ object.style.left = '0';
+ }
+ function moveRight() {
+ const maxWidth = container.clientWidth - object.clientWidth;
+ object.style.left = maxWidth + 'px';
+ }
+ function moveTop() {
+ object.style.top = '0';
+ }
+ function moveBottom() {
+ const maxHeight = container.clientHeight - object.clientHeight;
+ object.style.top = maxHeight + 'px';
+ }
+ </script>
+</body>
+</html>
+
+
+
+///////////////////////////////////
+
+
+
+fs lab internal 2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+1.basic state
+2.basic props
+3.COMPONENT DIDMOUNT
+4.SIMPLE RENDER
+5.GETDERIVED STATE FROM PROPS
+6.(DATA TO USER) REST API:
+7.EXPRESS
+8.RENDERING LISTS
+9.Build Search filter in React
+10.Simple counter exercise
+11.Simple Login form in React
+12.FS
+13.addUser in express
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+npm install -g create-react-app //install react
+npx create-react-app reactapp1 //To create rreact app
+npm start //run react
+//express
+
+"type":"module",
+npm init -y
+npm server.js
+
+
+import React from 'react';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+import React from 'react';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+
+export default App;
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&7
+COMPONENT DIDMOUNT
+
+import React from 'react';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+export default App;
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+SIMPLE RENDER
+
+import React from 'react';
+
+class App extends React.Component {
+  render() {
+    return (
+      <h1>This is the content of the Header component</h1>
+    );
+  }
+}
+export default App;
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+GETDERIVED STATE FROM PROPS
+
+import React from 'react';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  static getDerivedStateFromProps(props, state) {
+    return {favoritecolor: props.favcol };
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+export default App;
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+(DATA TO USER) REST API:
+
+import express from 'express';
+import fs from 'fs';
+const app = express();
+
+const port = 3000
+
+app.get('/', function (req, res) {
+   fs.readFile("user.json", 'utf8', (err, data) => {
+      res.end( data );
+   });
+})
+app.listen(port , function () {
+   console.log(`app listening at ${port}`)
+})
+
+USER.JSON DATA
+
+{   
+"user1" : {
+       "name" : "mahesh",
+       "password" : "password1",
+       "profession" : "teacher",
+       "id": 1
+
+    },
+
+
+    "user2" : {
+        "name" : "suresh",
+        "password" : "password2",
+        "profession" : "librarian",
+        "id": 2
+    },
+
+    "user3" : {
+        "name" : "ramesh",
+        "password" : "password3",
+        "profession" : "clerk",
+        "id": 3
+    }
+}
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+EXPRESS
+server.js
+import express from 'express'
+import path from 'path'
+const app = express()
+const port = 3000
+app.get('/', (req, res) => {
+  //res.send('Hello World!')
+  //res.sendFile(path.resolve("index.html"))
+  res.render('index.ejs')
+  console.log("get req for homepage")
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+index.ejs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Hello World!!</h2>
+    <% 
+    let d = new Date();
+    %>
+    <%= d %>
+</body>
+</html>
+
+node server.js
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+RENDERING LISTS
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>);
+reportWebVitals();
+
+//App.js
+
+
+
+#Passing properties from one component to another:
+
+const people = [
+  'Creola Katherine Johnson: mathematician',
+  'Mario José Molina-Pasquel Henríquez: chemist',
+  'Mohammad Abdus Salam: physicist',
+  'Percy Lavon Julian: chemist',
+  'Subrahmanyan Chandrasekhar: astrophysicist'];
+function App() {
+  const listItems = people.map(person =>
+    <li>{person}</li>
+  );
+  return <ul>{listItems}</ul>;
+}
+export default App;
+//App.js
+function Avatar() {
+    return (
+      <img
+        className="avatar"
+        src="https://i.imgur.com/1bX5QH6.jpg"
+        alt="Lin Lanying"
+        width={100}
+        height={100}
+      />);}
+  export default function App() {
+    return (
+      <Avatar />);}
+      
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+1. Build Search filter in React
+Code:
+import React, { useState } from 'react';
+export default function Filter(){
+const itemList = [ "Paris", "New York", "Tokyo", "London", "Rome", "Sydney", "Dubai", "Barcelona"
+];
+const [filteredList, setFilteredList] = useState(itemList);
+const filterBySearch = (event) => {
+const query = event.target.value;
+let updatedList = [...itemList];
+updatedList = updatedList.filter((item) => {
+return item.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+});
+setFilteredList(updatedList);
+};
+return(
+<div>
+<div className="search-header">
+<div className="search-text"><h1>Search:</h1></div>
+<input id="search-box" onChange={filterBySearch} />
+</div>
+<div id="item-list">
+<ul className="nono">
+{filteredList.map((item, index) => (
+<li key={index}>{item}</li>
+))}
+</ul>
+</div>
+</div>
+);
+}
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Simple counter exercise
+Code:
+import React, { useState } from "react";
+export default function Counter() {
+const [count, setCount] = useState(0);
+const incrementCount = () => {
+setCount(count + 1);
+};
+const decrementCount = () => {
+if(count>0){
+setCount(count - 1);
+}
+};
+return (
+<div>
+<h1>Counter</h1>
+<p>Count: {count}</p>
+<button onClick={incrementCount}>Increment</button>
+<button onClick={decrementCount}>Decrement</button>
+</div>
+);
+}
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+Simple Login form in React
+Code:
+import React, { useState } from 'react';
+const LoginForm = () => {
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [loggedIn, setLoggedIn] = useState(false);
+const [error, setError] = useState('');
+const correctName = 'John';
+const correctEmail = 'john@example.com';
+const correctPassword = 'password123'; // Correct password
+const handleSubmit = (e) => {
+e.preventDefault();
+if (name === correctName && email === correctEmail && password === correctPassword) {setLoggedIn(true);
+setError('');
+} else {
+setLoggedIn(false);
+setError('Invalid credentials. Please try again.');
+}
+};
+return (
+<div>
+{!loggedIn ? (
+<form onSubmit={handleSubmit}>
+<label>
+Name:
+<input
+type="text" value={name}onChange={(e) => setName(e.target.value)}
+/>
+</label>
+<br />
+<label>
+Email:
+<input
+type="email" value={email}
+onChange={(e) => setEmail(e.target.value)}
+/>
+</label>
+<br />
+<label>
+Password:
+<input
+type="password" value={password}
+onChange={(e) => setPassword(e.target.value)}
+/>
+</label>
+<br />
+<button type="submit">Login</button>
+{error && <div>{error}</div>}
+</form>
+) : (
+<div>Welcome, {name}!</div>
+)}
+</div>
+);
+};
+export default LoginForm;
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+FS
+//const fs = require ("fs")
+import fs from "fs"
+
+/*fs.writeFile("one.txt","data",(err)=>{
+    if (err) throw err ;
+    console.log("done")
+})
+*/
+fs.readFile("one.txt","utf-8",(err,data)=>{
+    if (err) throw err ;
+    console.log(data);
+})
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+/adduser in express
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="addUser" method="post">
+        Username  <input type="text" name="username" />
+          <input type="submit" />
+      </form>
+</body>
+</html>
+
+index.js
+
+import express from "express";
+import fs from "fs"
+import path from "path"
+import bodyparser from "body-parser"
+var app = express();
+
+app.use(bodyparser.urlencoded({ extended: true }));
+
+app.get("/",(req,res)=>{
+    res.sendFile(path.resolve("index.html"));
+})
+
+app.get('/listUsers', (req, res)=> {
+   fs.readFile( "users.json", 'utf8', (err, data) =>{
+      console.log( data );
+      res.end( data );
+   });
+})
+
+app.post('/addUser',(req,res)=>{
+    let username=req.body.username;
+    let jsondata = {
+        "usernew": {
+            "name":username
+        }
+    }
+    fs.readFile("users.json", 'utf8', (err, data)=> {
+        data = JSON.parse( data );
+        data["usernew"] = jsondata["usernew"];
+        console.log( data );
+        res.end( JSON.stringify(data));
+     });
+})
+
+app.listen(2031, function () {
+      console.log("Listening at 2031");
+})
+server.js
+import express from 'express'
+import path from 'path'
+const app = express()
+const port = 3000
+
+
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.get("/",(req,res)=>{
+    res.sendFile(path.resolve("index.html"))});
+
+app.post("/submit",async(req,res)=>{
+    console.log(req.body);
+    res.sendFile(path.resolve("success.html"));
+
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/submit" method="post">
+        <input type="text" id="uname" name="uname">
+        <input type="password" id="password" name="password">
+        <button>Submit</button>
+    </form>
+</body>
+</html>
+
+///////////////////////////////////////////////////////////////////////////
+Delete a file
+const fs = require('fs');
+
+const filePathToDelete = 'path/to/your/file.txt';
+
+fs.unlink(filePathToDelete, (err) => {
+    if (err) {
+        console.error('Error deleting file:', err);
+    } else {
+        console.log('File deleted successfully');
+    }
+});
+
+//////////////////////////////////////////////////////////////
+
+Rename a file
+const fs = require('fs');
+
+const oldFilePath = 'path/to/your/oldfile.txt';
+const newFilePath = 'path/to/your/newfile.txt';
+
+fs.rename(oldFilePath, newFilePath, (err) => {
+    if (err) {
+        console.error('Error renaming file:', err);
+    } else {
+        console.log('File renamed successfully');
+    }
+});
+
+
+
+
+
+
+open book exams/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+open book questions
+
+
+Q1.Build Search filter in React
+React code to build a simple search filter functionality to display a filtered list based on the search query entered
+by the user.
+The following are the steps to create a Search filter using React JS:
+1. Declare React states for search input values.
+2. Create HTML input text for entering search term and update state in onChange function.
+3. Add Array.filter() on list of items with search term value.
+// App.js
+import React from 'react';
+import SearchFilter from './SearchFilter';
+const App = () => {
+return (
+<div>
+<h1>Search Filter Example</h1>
+<SearchFilter />
+</div>);};
+export default App;
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+ReactDOM.render(
+<React.StrictMode>
+<App />
+</React.StrictMode>,
+document.getElementById('root')
+);
+//SearchFilter.js
+import React, { useState } from 'react';
+const SearchFilter = () => {
+const [searchTerm, setSearchTerm] = useState('');
+const [data, setData] = useState([
+'Apple',
+'Banana',
+'Cherry',
+'Date',
+'Grapes',
+'Lemon',
+'Orange',
+'Peach',
+]);
+const handleSearch = (event) => {
+setSearchTerm(event.target.value);
+};
+const filteredData = data.filter((item) =>
+item.toLowerCase().includes(searchTerm.toLowerCase()));
+return (
+<div>
+<h1>Search Filter in React</h1>
+<input
+type="text"
+placeholder="Search..."
+value={searchTerm}
+onChange={handleSearch}/>
+<ul>
+{filteredData.map((item, index) => (
+<li key={index}>{item}</li>
+))}
+</ul></div>);};
+export default SearchFilter;
+
+Q2. Simple Login form in React
+React code for simple login form where the user login by entering their username and password. The form inputs
+are validated to check if correct information is entered and the error messages are the validation fails. The login
+form is hidden and the “Welcome, ${name}” message is shown when the user login is successful.
+The following are the steps to create a simple login form using React JS:
+1. Create name, email and password input form elements.
+2. React States to store user input values.
+3. Add form validation for compare name, email and password with correct values.
+4. Display “Welcome, ${name}” if login is successful, else display the error message.
+// App.js
+import React from 'react';
+import SearchFilter from './LoginForm';
+const App = () => {
+return (
+<div>
+<h1>Search Filter Example</h1>
+<SearchFilter />
+</div>);};
+export default App;
+//LoginForm.js
+import React, { useState } from 'react';
+const LoginForm = () => {
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [loggedIn, setLoggedIn] = useState(false);
+const [error, setError] = useState('');
+const handleLogin = () => {
+const correctName = 'Sivani';
+const correctEmail = 'ksisivani04@gmail.com';
+const correctPassword = 'password123';
+if (name === correctName && email === correctEmail && password === correctPassword) {
+setLoggedIn(true);
+setError('');
+} else {
+setLoggedIn(false);
+setError('Invalid credentials. Please try again.');}};
+return (
+<div>
+<label>Name:
+<input type="text" value={name} onChange={(e) => setName(e.target.value)} /></label>
+<br />
+<label>Email:
+<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} /></label>
+<br />
+<label>Password:
+<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+</label>
+<br />
+<button onClick={handleLogin}>Login</button>
+{loggedIn ? (
+<p>Welcome, {name}!</p>
+) : (
+<p style={{ color: 'red' }}>{error}</p>
+)}
+</div>);};
+export default LoginForm;
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+ReactDOM.render(
+<React.StrictMode>
+<App />
+</React.StrictMode>,
+document.getElementById('root'));
+
+Q3. Simple counter exercise
+Creating a simple counter using React which increments or decrements count dynamically on-screen as the user
+clicks on the button. This exercise requires knowledge of fundamental React concepts such as State, Component,
+etc.
+We can complete the simple counter exercise with the following steps:
+Create React state to store the count value.
+Declare JS functions to incement or decrement the value through setState().
+Add HTML buttons with onClick to JSX code.
+// App.js
+import React from 'react';
+import SimpleCounter from './SimpleCounter';
+const App = () => {
+return (
+<div>
+<h1>React Simple Counter Exercise</h1>
+<SimpleCounter />
+</div>
+);};
+export default App;
+//SimpleCounter.js
+import React, { useState } from 'react';
+const SimpleCounter = () => {
+const [count, setCount] = useState(0);
+const increment = () => {
+setCount(count + 1);
+};
+const decrement = () => {
+setCount(count - 1);
+};
+return (
+<div>
+<h2>Simple Counter</h2>
+<p>Count: {count}</p>
+<button onClick={increment}>Increment</button>
+<button onClick={decrement}>Decrement</button>
+</div>
+);};
+export default SimpleCounter;
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+ReactDOM.render(
+<React.StrictMode>
+<App />
+</React.StrictMode>,
+document.getElementById('root')
+);
+
+Q4: react exercise to create an image slide where users can view multiple images with next/previous buttons.
+Additionally there is also an option to select an image from any index of the list through a click on option circle
+// ImageSlider.js
+import React, { useState } from 'react';
+import './ImageSlider.css';
+const ImageSlider = ({ images }) => {
+ const [currentIndex, setCurrentIndex] = useState(0);
+ const nextImage = () => {
+ setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+ };
+ const prevImage = () => {
+ setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+ };
+ const selectImage = (index) => {
+ setCurrentIndex(index);
+ };
+ return (
+ <div className="image-slider">
+ <div className="slide-container">
+ <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
+ <div className="controls">
+ <button onClick={prevImage}>Previous</button>
+ <button onClick={nextImage}>Next</button>
+ </div>
+ </div>
+ <div className="option-circles">
+ {images.map((image, index) => (
+ <div
+ key={index}
+ className={`option-circle ${index === currentIndex ? 'active' : ''}`}
+ onClick={() => selectImage(index)}
+ />
+ ))}
+ </div>
+ </div>
+ );
+};
+export default ImageSlider;
+/* ImageSlider.css */
+.image-slider {
+ width: 80%;
+ margin: 20px auto;
+}
+.slide-container {
+ position: relative;
+}
+.controls {
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+}
+.option-circles {
+ display: flex;
+ justify-content: center;
+ margin-top: 10px;
+}
+.option-circle {
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ background-color: #ccc;
+ margin: 0 5px;
+ cursor: pointer;
+}
+.option-circle.active {
+ background-color: #333;
+}
+// App.js
+import React from 'react';
+import ImageSlider from './ImageSlider';
+const images = [
+ 'image1.jpg',
+ 'image2.jpg',
+ 'image3.jpg',
+ // Add more image URLs as needed
+];
+function App() {
+ return (
+ <div className="App">
+ <ImageSlider images={images} />
+ </div>
+ );
+}
+export default App;
+
+Q5:create nodeJs based script file that reads the names of the 2 files from the user (use html form to read
+filenames).Read the content of the first file and write into the second file.if second file is available it should append
+the content.if not it should create new file and add the content to it.
+const express = require('express');
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.get('/', (req, res) => {
+ res.sendFile(__dirname + '/index.html');
+});
+app.post('/processFiles', (req, res) => {
+ const { firstFileName, secondFileName } = req.body;
+ // Read the content of the first file
+ fs.readFile(firstFileName, 'utf8', (err, data) => {
+ if (err) {
+ return res.status(500).send('Error reading the first file.');
+ }
+ // Append or create the second file
+ fs.appendFile(secondFileName, data, (err) => {
+ if (err) {
+ return res.status(500).send('Error writing to the second file.');
+ }
+ return res.send('Content successfully copied to the second file.');
+ });
+ });
+});
+app.listen(port, () => {
+ console.log(`Server is running on http://localhost:${port}`);
+});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>File Copy App</title>
+</head>
+<body>
+ <form action="/processFiles" method="post">
+ <label for="firstFileName">Enter the name of the first file:</label>
+ <input type="text" id="firstFileName" name="firstFileName" required><br>
+ <label for="secondFileName">Enter the name of the second file:</label>
+ <input type="text" id="secondFileName" name="secondFileName" required><br>
+ <button type="submit">Copy Content</button>
+ </form>
+</body>
+</html>
+
+Q6: develop a node js application to create a login page that is shown to the user as a homepage to read the
+username and password from the user and authenticate the user based on the data available in DB. if he is a valid
+user then present him the webpage with the message "Hello User username" else display an error message along
+with login page
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+// Sample in-memory database for demonstration purposes
+const users = [
+ { username: 'user1', password: 'password1' },
+ { username: 'user2', password: 'password2' },
+];
+app.use(bodyParser.urlencoded({ extended: true }));
+// Serve the login page
+app.get('/', (req, res) => {
+ res.sendFile(__dirname + '/login.html');
+});
+// Handle login form submission
+app.post('/login', (req, res) => {
+ const { username, password } = req.body;
+ // Authenticate user against the in-memory database
+ const user = users.find((u) => u.username === username && u.password === password);
+ if (user) {
+ // Display the welcome page
+ res.send(`Hello User ${username}`);
+ } else {
+ // Display an error message along with the login page
+ res.status(401).sendFile(__dirname + '/login.html');
+ }
+});
+app.listen(port, () => {
+ console.log(`Server is running on http://localhost:${port}`);
+});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login Page</title>
+</head>
+<body>
+ <h2>Login</h2>
+ <form action="/login" method="post">
+ <label for="username">Username:</label>
+ <input type="text" id="username" name="username" required><br>
+ <label for="password">Password:</label>
+ <input type="password" id="password" name="password" required><br>
+ <button type="submit">Login</button>
+ </form>
+</body>
+</html>
+
+Q7: describe the properties of Amazon web services as cloud computing services that make it a game
+changer for web applications that face uncertain but possibly explosive growth when compared to
+owning your services
+Amazon Web Services (AWS) is a widely used cloud computing platform that provides a variety of services to help
+businesses build and scale web applications. AWS has several properties that make it a game-changer for web applications
+facing uncertain but potentially explosive growth when compared to owning and managing your own services:
+1. **Scalability and Elasticity:**
+ - **Auto Scaling:** AWS provides Auto Scaling services that automatically adjust the capacity of your applications based on
+demand. This ensures that your application can handle sudden spikes in traffic and scale down during periods of low activity.
+ - **Elastic Load Balancing:** Distributes incoming traffic across multiple instances to ensure that no single instance
+becomes a bottleneck.
+2. **Global Reach:**
+ - **Global Infrastructure:** AWS has data centers in multiple geographic regions worldwide. This allows you to deploy your
+application closer to your end-users, reducing latency and improving user experience.
+3. **Pay-as-You-Go Pricing:**
+ - **Cost Efficiency:** AWS follows a pay-as-you-go pricing model, where you pay only for the resources you consume. This
+is particularly advantageous for startups and businesses with uncertain growth, as it eliminates the need for large upfront
+capital expenditures.
+4. **Managed Services:**
+ - **Fully Managed Services:** AWS offers a wide range of managed services, including databases, machine learning,
+analytics, and more. This allows developers to focus on building applications without worrying about the underlying
+infrastructure.
+ - **Serverless Computing:** AWS Lambda allows you to run code without provisioning or managing servers. This serverless
+architecture can significantly reduce operational overhead.
+5. **Security and Compliance:**
+ - **Comprehensive Security Model:** AWS provides a robust and secure infrastructure, with features like identity and
+access management (IAM), encryption, and network security. AWS is compliant with various industry standards and
+certifications.
+ - **Shared Responsibility Model:** AWS follows a shared responsibility model, where AWS manages the security of the
+cloud infrastructure, and customers are responsible for securing their data and applications.
+6. **Flexibility and Choice:**
+ - **Diverse Service Offerings:** AWS offers a vast array of services, including computing power, storage options, databases,
+machine learning, and more. This allows you to choose the right combination of services that best fit your application's
+requirements.
+ - **Open Ecosystem:** AWS supports a wide range of programming languages, frameworks, and operating systems,
+providing flexibility for developers to use the tools and technologies they are familiar with.
+7. **DevOps Integration:**
+ - **DevOps Support:** AWS provides tools and services that facilitate DevOps practices, such as continuous integration,
+continuous deployment, and infrastructure as code (IaC). This helps streamline development and operations processes.
+8. **Reliability and Availability:**
+ - **High Availability:** AWS services are designed for high availability, with redundancy built into the infrastructure. This
+minimizes the risk of downtime and ensures that your application remains accessible.
+9. **Innovation and Agility:**
+ - **Rapid Innovation:** AWS continuously introduces new services and features, enabling businesses to leverage the latest
+technologies and stay ahead of the competition.
+ - **Agility:** With the ability to provision resources quickly and scale on demand, AWS enables businesses to respond
+rapidly to changing market conditions and customer demands.
+In summary, AWS's scalability, global reach, pay-as-you-go pricing, managed services, security measures, flexibility, and
+focus on innovation make it a compelling choice for web applications facing uncertain but potentially explosive growth. It
+allows businesses to scale seamlessly, reduce costs, and leverage a vast ecosystem of services without the complexity of
+owning and managing their own infrastructure.
+Q8: differentiate between SOAP and REST. Which one is being used for APIs and why?
+SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two different architectural styles for
+designing web services. Here are the key differences between SOAP and REST:
+### SOAP (Simple Object Access Protocol):
+1. **Protocol Type:**
+ - SOAP is a protocol, a set of rules for structuring messages that are exchanged between computers.
+2. **Message Format:**
+ - SOAP messages are XML-based and can be quite verbose, containing a lot of metadata.
+ - Typically, SOAP messages are sent over HTTP or SMTP.
+3. **Statefulness:**
+ - SOAP can be stateful, meaning the server can store information about the client between requests.
+4. **Operations:**
+ - SOAP supports a wide range of operations, including complex transactions and security.
+5. **Standards:**
+ - SOAP has a set of formal standards and specifications (WS-Security, WS-Transaction, etc.).
+6. **Flexibility:**
+ - Due to its complexity and standards, SOAP is often considered more rigid and less flexible than REST.
+### REST (Representational State Transfer):
+1. **Architectural Style:**
+ - REST is an architectural style that uses a stateless, client-server communication model.
+2. **Message Format:**
+ - RESTful APIs use lightweight data formats such as JSON for data exchange.
+ - Data is often represented in a resource-oriented way.
+3. **Statelessness:**
+ - REST is stateless, meaning each request from a client contains all the information needed to understand and fulfill the
+request.
+4. **Operations:**
+ - RESTful APIs are typically limited to a small set of operations (HTTP methods: GET, POST, PUT, DELETE).
+ - It follows the principles of CRUD (Create, Read, Update, Delete).
+5. **Standards:**
+ - REST relies on standards like HTTP, URI, and MIME.
+6. **Flexibility:**
+ - REST is considered more flexible and scalable. It is simpler and easier to use for a wide range of clients.
+### Usage for APIs:
+REST is more commonly used for modern web APIs for several reasons:
+1. **Simplicity:**
+ - REST is simpler to implement and understand. It uses standard HTTP methods and is based on the principles of the web.
+2. **Flexibility:**
+ - REST is more flexible and can be used with different data formats (JSON, XML) and can be easily consumed by a wide
+variety of clients, including browsers, mobile devices, and other applications.
+3. **Scalability:**
+ - Due to its stateless nature and simplicity, RESTful APIs are often more scalable and easier to maintain.
+4. **Performance:**
+ - JSON, commonly used with REST, is more lightweight than XML, making it faster to parse and transmit.
+5. **Industry Adoption:**
+ - REST has gained widespread industry adoption, and many modern frameworks and tools are built with RESTful principles
+in mind.
+While SOAP is still used in certain scenarios, especially in enterprise environments where there may be existing SOAP-based
+systems, REST has become the preferred choice for building APIs in the context of modern web development due to its
+simplicity, flexibility, and ease of use.
+
+
+Q9: develop rest API for the bookstore application. API should be created to enable the user to retrieve
+the book details update a new book entry and search for an entry based on a book id. Assume bookstore
+has book id, name, author and price
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+// Sample in-memory database for demonstration purposes
+let books = [
+ { id: 1, name: 'Book1', author: 'Author1', price: 19.99 },
+ { id: 2, name: 'Book2', author: 'Author2', price: 29.99 },
+];
+app.use(bodyParser.json());
+// Get all books
+app.get('/books', (req, res) => {
+ res.json(books);
+});
+// Get a book by ID
+app.get('/books/:id', (req, res) => {
+ const bookId = parseInt(req.params.id);
+ const book = books.find((b) => b.id === bookId);
+ if (book) {
+ res.json(book);
+ } else {
+ res.status(404).json({ message: 'Book not found' });
+ }
+});
+// Add a new book
+app.post('/books', (req, res) => {
+ const { name, author, price } = req.body;
+ const newBook = {
+ id: books.length + 1,
+ name,
+ author,
+ price,
+ };
+ books.push(newBook);
+ res.status(201).json(newBook);
+});
+// Update a book by ID
+app.put('/books/:id', (req, res) => {
+ const bookId = parseInt(req.params.id);
+ const index = books.findIndex((b) => b.id === bookId);
+ if (index !== -1) {
+ const { name, author, price } = req.body;
+ books[index] = { id: bookId, name, author, price };
+ res.json(books[index]);
+ } else {
+ res.status(404).json({ message: 'Book not found' });
+ }
+});
+app.listen(port, () => {
+ console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
